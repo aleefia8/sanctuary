@@ -644,19 +644,36 @@
     });
   });
 
-  // ─── Upgrade Modal CTA ────────────────────────
-  $('.modal-cta').addEventListener('click', () => {
-    state.tier = 'pro';
-    $('#upgrade-modal').classList.remove('show');
-    $('#profile-tier').textContent = 'Warrior • Pro Tier';
-    showToast('🎉 Welcome to Sanctuary Pro!');
-    
-    // Unlock tier 2 items
-    $$('.locked-overlay').forEach(item => {
-      item.classList.remove('locked-overlay');
-      item.querySelector('.t2-lock').style.display = 'none';
+  // ─── Gamification Modal logic ─────────────────
+  const btnUpgradeHealth = $('#btn-upgrade-health');
+  if (btnUpgradeHealth) {
+    btnUpgradeHealth.addEventListener('click', () => {
+      $('#upgrade-modal').classList.add('show');
     });
-  });
+  }
+
+  const btnUpgradeNow = $('#btn-upgrade-now');
+  if (btnUpgradeNow) {
+    btnUpgradeNow.addEventListener('click', () => {
+      state.tier = 'pro';
+      $('#upgrade-modal').classList.remove('show');
+      $('#profile-tier').textContent = 'Warrior • Pro Tier';
+      showToast('🎉 Welcome to Sanctuary Pro!');
+      
+      // Unlock tier 2 items
+      $$('.locked-overlay').forEach(item => {
+        item.classList.remove('locked-overlay');
+        item.querySelector('.t2-lock').style.display = 'none';
+      });
+    });
+  }
+
+  const btnUpgradeLater = $('#btn-upgrade-later');
+  if (btnUpgradeLater) {
+    btnUpgradeLater.addEventListener('click', () => {
+      $('#upgrade-modal').classList.remove('show');
+    });
+  }
 
   // ─── Intersection Observer for animations ─────
   if ('IntersectionObserver' in window) {
