@@ -13,131 +13,107 @@
 <body>
   <!-- ========== ONBOARDING ========== -->
 
-  <!-- Screen 1: Hook -->
+  <!-- Screen 1: Splash / Launch -->
   <div id="screen-hook" class="screen onboarding-screen active">
     <div class="onboarding-container">
       <div class="hook-glow"></div>
-      <div class="logo-mark">
-        <svg viewBox="0 0 60 60" width="60" height="60">
+      <div class="logo-mark pulse-logo">
+        <svg viewBox="0 0 60 60" width="80" height="80">
           <circle cx="30" cy="30" r="28" fill="none" stroke="url(#grad1)" stroke-width="2"/>
           <path d="M20 30 Q30 15 40 30 Q30 45 20 30Z" fill="url(#grad1)" opacity="0.7"/>
           <defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient></defs>
         </svg>
       </div>
-      <h1 class="hook-title">Sanctuary<span class="accent">OS</span></h1>
-      <p class="hook-subtitle">Upgrade Your Health.<br/>Earn While You Do It.</p>
-      <div class="hook-features">
-        <div class="hook-feature"><span class="feature-icon">🧬</span><span>AI-Powered Guidance</span></div>
-        <div class="hook-feature"><span class="feature-icon">🏆</span><span>Gamified Missions</span></div>
-        <div class="hook-feature"><span class="feature-icon">💰</span><span>Earn M Coins</span></div>
+      <h1 class="hook-title">Restoration™</h1>
+      <p class="hook-subtitle">Upgrade Your Health. Earn While You Do It.</p>
+      
+      <div class="splash-actions">
+        <button id="btn-start" class="btn-primary btn-glow">Start Free</button>
+        <button id="btn-signin" class="btn-text">Sign In</button>
       </div>
-      <button id="btn-start" class="btn-primary btn-glow">Start Free</button>
-      <p class="hook-disclaimer">No credit card required • 2 min setup</p>
     </div>
   </div>
 
-  <!-- Screen 2: Swipe Preferences -->
+  <!-- Screen 2: Preferences -->
   <div id="screen-preferences" class="screen onboarding-screen">
     <div class="onboarding-container">
       <div class="progress-dots">
         <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
       </div>
-      <h2 class="onboard-title">What matters most to you?</h2>
-      <p class="onboard-sub">Select your top priorities. We'll personalize everything.</p>
-      <div class="pref-grid" id="pref-grid">
-        <button class="pref-card" data-pref="energy">
-          <span class="pref-emoji">⚡</span>
-          <span class="pref-label">Energy</span>
+      <h2 class="onboard-title">What do you want to improve?</h2>
+      <p class="onboard-sub">Tap to select your focus areas.</p>
+      
+      <div class="pref-scroll-list" id="pref-grid">
+        <button class="pref-row-card" data-pref="energy">
+          <div class="pref-row-icon">⚡</div>
+          <div class="pref-row-text">Energy</div>
         </button>
-        <button class="pref-card" data-pref="sleep">
-          <span class="pref-emoji">🌙</span>
-          <span class="pref-label">Sleep</span>
+        <button class="pref-row-card" data-pref="sleep">
+          <div class="pref-row-icon">😴</div>
+          <div class="pref-row-text">Sleep</div>
         </button>
-        <button class="pref-card" data-pref="fitness">
-          <span class="pref-emoji">💪</span>
-          <span class="pref-label">Fitness</span>
+        <button class="pref-row-card" data-pref="fitness">
+          <div class="pref-row-icon">💪</div>
+          <div class="pref-row-text">Fitness</div>
         </button>
-        <button class="pref-card" data-pref="stress">
-          <span class="pref-emoji">🧘</span>
-          <span class="pref-label">Stress</span>
+        <button class="pref-row-card" data-pref="stress">
+          <div class="pref-row-icon">🧠</div>
+          <div class="pref-row-text">Stress</div>
         </button>
-        <button class="pref-card" data-pref="longevity">
-          <span class="pref-emoji">🧬</span>
-          <span class="pref-label">Longevity</span>
-        </button>
-        <button class="pref-card" data-pref="nutrition">
-          <span class="pref-emoji">🥗</span>
-          <span class="pref-label">Nutrition</span>
+        <button class="pref-row-card" data-pref="longevity">
+          <div class="pref-row-icon">🧬</div>
+          <div class="pref-row-text">Longevity</div>
         </button>
       </div>
+      
       <button id="btn-prefs-next" class="btn-primary" disabled>Continue</button>
     </div>
   </div>
 
-  <!-- Screen 3: Instant Health Score -->
-  <div id="screen-score" class="screen onboarding-screen">
+  <!-- Screen 3: Mood Slider (NEW) -->
+  <div id="screen-mood" class="screen onboarding-screen">
     <div class="onboarding-container">
       <div class="progress-dots">
         <span class="dot done"></span><span class="dot active"></span><span class="dot"></span>
       </div>
-      <h2 class="onboard-title">Your Health Score</h2>
-      <p class="onboard-sub">Based on your priorities and lifestyle baseline</p>
-      <div class="score-ring-container">
-        <svg class="score-ring" viewBox="0 0 200 200">
-          <circle cx="100" cy="100" r="88" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
-          <circle id="score-arc" cx="100" cy="100" r="88" fill="none" stroke="url(#scoreGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="553" stroke-dashoffset="553" transform="rotate(-90 100 100)"/>
-          <defs><linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient></defs>
-        </svg>
-        <div class="score-number" id="score-number">0</div>
-        <div class="score-label">out of 100</div>
+      <h2 class="onboard-title">How do you feel today?</h2>
+      <p class="onboard-sub">Slide to match your current energy.</p>
+      
+      <div class="mood-slider-container">
+        <div class="mood-slider-emoji" id="mood-slider-emoji">😐</div>
+        <input type="range" id="mood-slider" min="1" max="100" value="50" class="onboard-slider" />
+        <div class="mood-slider-labels">
+          <span>😴</span>
+          <span>😐</span>
+          <span>⚡</span>
+        </div>
       </div>
-      <div class="score-breakdown">
-        <div class="score-item"><span class="score-dot" style="background:#34D399"></span>Activity <span class="score-val">68</span></div>
-        <div class="score-item"><span class="score-dot" style="background:#22D3EE"></span>Sleep <span class="score-val">55</span></div>
-        <div class="score-item"><span class="score-dot" style="background:#A78BFA"></span>Nutrition <span class="score-val">62</span></div>
-        <div class="score-item"><span class="score-dot" style="background:#F59E0B"></span>Stress <span class="score-val">70</span></div>
-      </div>
-      <p class="score-note">No devices needed · Updates daily with your habits</p>
-      <button id="btn-score-next" class="btn-primary">Continue</button>
+      
+      <button id="btn-mood-next" class="btn-primary">Continue</button>
     </div>
   </div>
 
-  <!-- Screen 4: Tier Split -->
-  <div id="screen-tier" class="screen onboarding-screen">
+  <!-- Screen 4: Score Reveal (Hook Moment) -->
+  <div id="screen-score" class="screen onboarding-screen">
     <div class="onboarding-container">
       <div class="progress-dots">
         <span class="dot done"></span><span class="dot done"></span><span class="dot active"></span>
       </div>
-      <h2 class="onboard-title">Choose Your Path</h2>
-      <p class="onboard-sub">Start free, upgrade anytime</p>
-      <div class="tier-cards">
-        <div class="tier-card" id="tier-free">
-          <div class="tier-badge">FREE</div>
-          <h3>Explorer</h3>
-          <ul class="tier-features">
-            <li>✓ Health Score tracking</li>
-            <li>✓ 3 daily missions</li>
-            <li>✓ Basic AI guidance</li>
-            <li>✓ Earn M Coins</li>
-            <li class="locked">✗ Doctor matching</li>
-            <li class="locked">✗ Advanced analytics</li>
-          </ul>
-          <button class="btn-tier btn-tier-free" data-tier="free">Start Now</button>
-        </div>
-        <div class="tier-card tier-premium" id="tier-premium">
-          <div class="tier-badge premium-badge">FULL SYSTEM</div>
-          <h3>Sanctuary Pro</h3>
-          <div class="tier-price">$9.99<span>/mo</span></div>
-          <ul class="tier-features">
-            <li>✓ Everything in Free</li>
-            <li>✓ 5 daily missions</li>
-            <li>✓ Advanced AI coaching</li>
-            <li>✓ Doctor marketplace</li>
-            <li>✓ 3x M Coin boost</li>
-            <li>✓ Wearable sync</li>
-          </ul>
-          <button class="btn-tier btn-tier-pro" data-tier="pro">Unlock Full System</button>
-        </div>
+      <h2 class="onboard-title">Your Health Score</h2>
+      
+      <div class="score-ring-container">
+        <svg class="score-ring" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="88" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
+          <circle id="score-arc" cx="100" cy="100" r="88" fill="none" stroke="url(#scoreGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="553" stroke-dashoffset="553" transform="rotate(-90 100 100)"/>
+        </svg>
+        <div class="score-number" id="score-number">0</div>
+      </div>
+      
+      <p class="score-insight-text">"You're above average. Let's level you up."</p>
+      
+      <div class="score-actions">
+        <button id="btn-score-enter" class="btn-primary">Enter App</button>
+        <button id="btn-score-unlock" class="btn-secondary">Unlock Full System</button>
       </div>
     </div>
   </div>
@@ -147,18 +123,12 @@
 
     <!-- Header -->
     <header class="app-header">
-      <div class="header-left">
-        <svg viewBox="0 0 32 32" width="28" height="28"><circle cx="16" cy="16" r="14" fill="none" stroke="url(#hGrad)" stroke-width="1.5"/><path d="M10 16 Q16 8 22 16 Q16 24 10 16Z" fill="url(#hGrad)" opacity="0.7"/><defs><linearGradient id="hGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient></defs></svg>
-        <span class="header-title">SanctuaryOS</span>
+      <div class="header-left" id="btn-profile-icon" style="cursor:pointer; display:flex; align-items:center; gap:10px;">
+        <div class="profile-avatar-sm" style="width:32px; height:32px; border-radius:16px; background:var(--bg-glass); display:flex; align-items:center; justify-content:center; font-size:1.1rem; border:1px solid var(--border-glass);">🧬</div>
+        <span class="header-title" style="font-size:1.1rem; font-weight:600;">Profile</span>
       </div>
       <div class="header-right">
-        <div class="coin-display" id="header-coins">
-          <span class="coin-icon">🪙</span>
-          <span id="coin-count">0</span>
-        </div>
-        <button class="header-btn" id="btn-profile-icon" aria-label="Profile">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
-        </button>
+        <button class="header-btn" aria-label="Notifications" style="font-size:1.3rem;">🔔</button>
       </div>
     </header>
 
@@ -217,7 +187,7 @@
           <!-- Today's Missions -->
           <div class="section-header">
             <h2>Today's Missions</h2>
-            <span class="section-badge" id="missions-done">0/4 Complete</span>
+            <span class="section-badge" id="missions-done">0/3 Complete</span>
           </div>
           <div class="missions-list" id="missions-list">
             <div class="mission-card" data-mission="steps" data-coins="5">
@@ -228,13 +198,13 @@
               </div>
               <div class="mission-reward">+5 🪙</div>
             </div>
-            <div class="mission-card" data-mission="sleep" data-coins="4">
+            <div class="mission-card" data-mission="sleep" data-coins="10">
               <div class="mission-check"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg></div>
               <div class="mission-info">
                 <div class="mission-title">Sleep before 11pm</div>
                 <div class="mission-sub">Consistent bedtime = better recovery</div>
               </div>
-              <div class="mission-reward">+4 🪙</div>
+              <div class="mission-reward">+10 🪙</div>
             </div>
             <div class="mission-card" data-mission="meals" data-coins="4">
               <div class="mission-check"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg></div>
@@ -244,23 +214,27 @@
               </div>
               <div class="mission-reward">+4 🪙</div>
             </div>
-            <div class="mission-card" data-mission="water" data-coins="3">
-              <div class="mission-check"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg></div>
-              <div class="mission-info">
-                <div class="mission-title">Drink 8 glasses of water</div>
-                <div class="mission-sub">Stay hydrated throughout the day</div>
-              </div>
-              <div class="mission-reward">+3 🪙</div>
-            </div>
           </div>
 
           <!-- Quick Actions -->
           <div class="section-header"><h2>Quick Actions</h2></div>
           <div class="quick-actions">
-            <button class="qa-btn" id="qa-mood"><span class="qa-icon">😊</span><span>Log Mood</span></button>
-            <button class="qa-btn" id="qa-sleep"><span class="qa-icon">💤</span><span>Log Sleep</span></button>
-            <button class="qa-btn" id="qa-meal"><span class="qa-icon">🍽️</span><span>Log Meal</span></button>
-            <button class="qa-btn" id="qa-steps"><span class="qa-icon">👟</span><span>Log Steps</span></button>
+            <button class="action-btn">
+              <span class="action-icon">🧘‍♀️</span>
+              <span>Daily<br>Meditation</span>
+            </button>
+            <button class="action-btn">
+              <span class="action-icon">🏃‍♂️</span>
+              <span>Quick<br>Workout</span>
+            </button>
+            <button class="action-btn" id="btn-action-food">
+              <span class="action-icon">🥗</span>
+              <span>Log<br>Meal</span>
+            </button>
+            <button class="action-btn" id="btn-action-doctor">
+              <span class="action-icon">⚕️</span>
+              <span>Book<br>Consult</span>
+            </button>
           </div>
 
           <!-- Recommended Meals -->
@@ -295,67 +269,120 @@
           <div class="glass-card">
             <div class="level-header">
               <div>
-                <div class="level-title">Level <span id="gam-level">4</span></div>
-                <div class="level-rank" id="gam-rank">Explorer</div>
-              </div>
-              <div class="level-xp"><span id="gam-xp">380</span> / 500 XP</div>
-            </div>
-            <div class="xp-bar"><div class="xp-fill" id="gam-xp-fill" style="width:76%"></div></div>
-            <div class="level-next">Next: <strong>Warrior</strong> — Unlock Doctor Marketplace</div>
-          </div>
-
-          <!-- M Coin Wallet -->
-          <div class="glass-card coin-wallet">
-            <div class="wallet-header">
-              <span class="wallet-icon">🪙</span>
-              <div>
-                <div class="wallet-title">M Coin Wallet</div>
-                <div class="wallet-balance" id="wallet-balance">247</div>
+                <div class="level-title">Level <span id="gam-level">7</span> → 8</div>
               </div>
             </div>
-            <div class="wallet-stats">
-              <div class="ws"><span class="ws-label">Today</span><span class="ws-val" id="w-today">+12</span></div>
-              <div class="ws"><span class="ws-label">This Week</span><span class="ws-val" id="w-week">+84</span></div>
-              <div class="ws"><span class="ws-label">Total</span><span class="ws-val" id="w-total">247</span></div>
-            </div>
+            <div class="xp-bar" style="margin-top:12px; height:12px; border-radius:6px; background:rgba(255,255,255,0.1);"><div class="xp-fill" id="gam-xp-fill" style="width:70%; height:100%; border-radius:6px; background:var(--gradient-primary);"></div></div>
           </div>
 
-          <!-- Streak Info -->
+          <div class="section-header"><h2>Today's Missions</h2></div>
+          <div class="missions-list">
+            <div class="mission-card completed" data-mission="steps" data-coins="5">
+              <div class="mission-check"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="#34D399" stroke="#34D399" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" stroke="#0c0f14" stroke-width="2.5" fill="none" class="mc-check-path"/></svg></div>
+              <div class="mission-info">
+                <div class="mission-title">Walk 6,000 steps</div>
+              </div>
+              <div class="mission-reward">+5 🪙</div>
+            </div>
+            <div class="mission-card" data-mission="water" data-coins="3">
+              <div class="mission-check"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg></div>
+              <div class="mission-info">
+                <div class="mission-title">Drink 2L water</div>
+              </div>
+              <div class="mission-reward">+3 🪙</div>
+            </div>
+            <div class="mission-card" data-mission="sleep2" data-coins="10">
+              <div class="mission-check"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg></div>
+              <div class="mission-info">
+                <div class="mission-title">Sleep before 11pm</div>
+              </div>
+              <div class="mission-reward">+10 🪙</div>
+            </div>
+          </div>
+          
+          <div class="section-header"><h2>Weekly Challenge</h2></div>
           <div class="glass-card">
             <div class="streak-header">
               <span class="streak-fire">🔥</span>
               <div>
-                <div class="streak-title"><span id="gam-streak">5</span> Day Streak</div>
-                <div class="streak-desc">Keep going! 2 more days for x3 multiplier</div>
+                <div class="streak-title">5-Day Consistency</div>
+                <div class="streak-desc">Reward: +50 M Coins</div>
               </div>
             </div>
-            <div class="multiplier-track">
-              <div class="multi-step active"><span>x1</span><small>Day 1-3</small></div>
-              <div class="multi-step active"><span>x2</span><small>Day 4-7</small></div>
-              <div class="multi-step"><span>x3</span><small>Day 7+</small></div>
+          </div>
+
+          <!-- M Coin Wallet -->
+          <div class="section-header"><h2>Wallet (M Coin)</h2></div>
+          <div class="glass-card coin-wallet">
+            <div class="wallet-header">
+              <span class="wallet-icon">💰</span>
+              <div>
+                <div class="wallet-title">Balance</div>
+                <div class="wallet-balance" id="wallet-balance">245 M Coins</div>
+              </div>
+            </div>
+            <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border-glass);">
+              <div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:8px;">EARNED TODAY</div>
+              <div style="font-size:1.1rem; font-weight:700; color:var(--accent-green);">+12 coins</div>
             </div>
           </div>
 
-          <!-- Earn Methods -->
-          <div class="section-header"><h2>How to Earn</h2></div>
-          <div class="earn-list">
-            <div class="earn-item"><span class="earn-icon">✅</span><div class="earn-info"><strong>Complete Missions</strong><span>3-5 coins each</span></div></div>
-            <div class="earn-item"><span class="earn-icon">🔥</span><div class="earn-info"><strong>Daily Streaks</strong><span>Bonus multiplier on all earnings</span></div></div>
-            <div class="earn-item"><span class="earn-icon">👥</span><div class="earn-info"><strong>Refer Friends</strong><span>+25 coins per referral</span></div></div>
-            <div class="earn-item"><span class="earn-icon">🏅</span><div class="earn-info"><strong>Level Up</strong><span>+50 coins per level</span></div></div>
+          <div class="section-header"><h2>Spend</h2></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:24px;">
+            <div style="background:var(--bg-glass); border:1px solid var(--border-glass); border-radius:12px; padding:16px 8px; text-align:center;">
+              <div style="font-size:1.8rem; margin-bottom:8px;">🍽️</div>
+              <div style="font-size:0.85rem; font-weight:600;">Meals</div>
+            </div>
+            <div style="background:var(--bg-glass); border:1px solid var(--border-glass); border-radius:12px; padding:16px 8px; text-align:center;">
+              <div style="font-size:1.8rem; margin-bottom:8px;">🧘</div>
+              <div style="font-size:0.85rem; font-weight:600;">Retreats</div>
+            </div>
+            <div style="background:var(--bg-glass); border:1px solid var(--border-glass); border-radius:12px; padding:16px 8px; text-align:center;">
+              <div style="font-size:1.8rem; margin-bottom:8px;">🎁</div>
+              <div style="font-size:0.85rem; font-weight:600;">Rewards</div>
+            </div>
           </div>
 
-          <!-- Achievements -->
-          <div class="section-header"><h2>Achievements</h2></div>
-          <div class="achievements-grid">
-            <div class="achievement unlocked"><span class="ach-icon">🌟</span><span class="ach-name">First Step</span></div>
-            <div class="achievement unlocked"><span class="ach-icon">🔥</span><span class="ach-name">3-Day Streak</span></div>
-            <div class="achievement unlocked"><span class="ach-icon">🪙</span><span class="ach-name">100 Coins</span></div>
-            <div class="achievement"><span class="ach-icon">💪</span><span class="ach-name">7-Day Streak</span></div>
-            <div class="achievement"><span class="ach-icon">🧠</span><span class="ach-name">AI Seeker</span></div>
-            <div class="achievement"><span class="ach-icon">🏆</span><span class="ach-name">Level 10</span></div>
-            <div class="achievement"><span class="ach-icon">❤️</span><span class="ach-name">Health Pro</span></div>
-            <div class="achievement"><span class="ach-icon">👑</span><span class="ach-name">Legend</span></div>
+          <div class="section-header"><h2>History</h2></div>
+          <div class="glass-card" style="display:flex; flex-direction:column; gap:16px; margin-bottom:32px;">
+            <div style="display:flex; justify-content:space-between; font-size:0.95rem;">
+              <span>+5 Walk</span><span style="color:var(--text-secondary)">Today</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.95rem;">
+              <span>+10 Sleep</span><span style="color:var(--text-secondary)">Today</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.95rem;">
+              <span>-20 Meal</span><span style="color:var(--text-secondary)">Yesterday</span>
+            </div>
+          </div>
+
+          <!-- Community Leaderboard -->
+          <div class="section-header"><h2>Leaderboard</h2></div>
+          <div class="glass-card" style="margin-bottom:24px;">
+            <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--border-glass);">
+              <div style="display:flex; gap:12px; align-items:center;">
+                <span style="font-weight:700; width:20px; text-align:center;">1</span>
+                <div style="width:32px; height:32px; border-radius:16px; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center;">👨‍🚀</div>
+                <span style="font-weight:600;">Alex R.</span>
+              </div>
+              <span style="color:var(--accent-gold); font-weight:700;">12,500</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:12px; margin:-1px -12px 0; border-bottom:1px solid rgba(52,211,153,0.3); background:rgba(52,211,153,0.1); border-radius:8px;">
+              <div style="display:flex; gap:12px; align-items:center;">
+                <span style="font-weight:700; width:20px; text-align:center; color:var(--accent-green);">2</span>
+                <div style="width:32px; height:32px; border-radius:16px; background:rgba(52,211,153,0.2); display:flex; align-items:center; justify-content:center;">🧬</div>
+                <span style="font-weight:600; color:var(--accent-green);">You</span>
+              </div>
+              <span style="color:var(--accent-green); font-weight:700;">9,200</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:12px 0;">
+              <div style="display:flex; gap:12px; align-items:center;">
+                <span style="font-weight:700; width:20px; text-align:center;">3</span>
+                <div style="width:32px; height:32px; border-radius:16px; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center;">👩‍🔬</div>
+                <span style="font-weight:600;">Sarah M.</span>
+              </div>
+              <span style="color:var(--accent-gold); font-weight:700;">8,450</span>
+            </div>
           </div>
         </div>
       </section>
@@ -370,16 +397,26 @@
               <div class="chat-bot-status">Your health concierge</div>
             </div>
           </div>
+          
           <div class="chat-messages" id="chat-messages">
+            <!-- Daily Insight Card -->
+            <div class="daily-insight-card">
+              <div class="di-header">
+                <span class="di-icon">✨</span>
+                <span class="di-title">Daily Insight</span>
+              </div>
+              <p class="di-text">"You perform best when sleep exceeds 7h. Based on your activity, slowing down tonight is recommended."</p>
+            </div>
+          
             <div class="chat-msg bot">
               <div class="chat-bubble">Hey! 👋 I'm your Sanctuary AI concierge. I can help you understand your health patterns and give lifestyle guidance. What's on your mind?</div>
               <div class="chat-time">Just now</div>
             </div>
           </div>
+          
           <div class="chat-suggestions" id="chat-suggestions">
             <button class="suggestion-chip" data-msg="Why am I tired?">Why am I tired?</button>
             <button class="suggestion-chip" data-msg="How can I sleep better?">How can I sleep better?</button>
-            <button class="suggestion-chip" data-msg="Give me today's summary">Today's summary</button>
             <button class="suggestion-chip" data-msg="What should I eat?">What should I eat?</button>
           </div>
           <div class="chat-input-bar">
@@ -394,55 +431,32 @@
       <!-- HEALTH TAB -->
       <section id="tab-health" class="tab-panel">
         <div class="dash-scroll">
-          <div class="section-header"><h2>Health Tracking</h2></div>
+          <div class="section-header"><h2>Health Metrics</h2></div>
 
-          <!-- Tier 1 Tracking -->
-          <div class="glass-card">
-            <div class="track-header">
-              <h3>Daily Check-in</h3>
-              <span class="tier-label">Tier 1</span>
-            </div>
-
-            <!-- Steps -->
-            <div class="track-item">
-              <div class="track-icon">👟</div>
-              <div class="track-info">
-                <div class="track-name">Steps</div>
-                <div class="track-val"><span id="track-steps">4,230</span> / 6,000</div>
+          <div class="glass-card" style="margin-bottom:24px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div class="hz-metric">
+                <span style="font-size:0.8rem; color:var(--text-secondary);">Sleep</span>
+                <div style="font-size:1.1rem; font-weight:700;">6h 12m <span style="color:var(--accent-red); font-size:0.8rem;">↓</span></div>
               </div>
-              <div class="track-progress"><div class="track-fill" style="width:70%;background:#34D399"></div></div>
-            </div>
-
-            <!-- Sleep -->
-            <div class="track-item">
-              <div class="track-icon">🌙</div>
-              <div class="track-info">
-                <div class="track-name">Sleep</div>
-                <div class="track-val"><span id="track-sleep">6.5</span>h / 8h</div>
+              <div class="hz-metric">
+                <span style="font-size:0.8rem; color:var(--text-secondary);">Stress</span>
+                <div style="font-size:1.1rem; font-weight:700;">Medium <span style="color:var(--accent-red); font-size:0.8rem;">↑</span></div>
               </div>
-              <div class="track-progress"><div class="track-fill" style="width:81%;background:#22D3EE"></div></div>
-            </div>
-
-            <!-- Mood -->
-            <div class="track-item">
-              <div class="track-icon">😊</div>
-              <div class="track-info">
-                <div class="track-name">Mood</div>
-                <div class="track-val" id="track-mood">Good</div>
+              <div class="hz-metric">
+                <span style="font-size:0.8rem; color:var(--text-secondary);">Activity</span>
+                <div style="font-size:1.1rem; font-weight:700;">5,200 <span style="font-size:0.8rem; font-weight:400;">steps</span></div>
               </div>
-              <div class="mood-selector" id="mood-selector">
-                <button class="mood-btn" data-mood="😫" data-label="Awful">😫</button>
-                <button class="mood-btn" data-mood="😐" data-label="Meh">😐</button>
-                <button class="mood-btn active" data-mood="😊" data-label="Good">😊</button>
-                <button class="mood-btn" data-mood="😄" data-label="Great">😄</button>
-                <button class="mood-btn" data-mood="🤩" data-label="Amazing">🤩</button>
+              <div class="hz-metric">
+                <span style="font-size:0.8rem; color:var(--text-secondary);">Recovery</span>
+                <div style="font-size:1.1rem; font-weight:700;">68%</div>
               </div>
             </div>
           </div>
 
           <!-- Weekly Chart -->
+          <div class="section-header"><h2>Week View</h2></div>
           <div class="glass-card">
-            <h3>Weekly Overview</h3>
             <div class="week-chart" id="week-chart">
               <div class="wc-day"><div class="wc-bar" style="height:45%"></div><span>Mon</span></div>
               <div class="wc-day"><div class="wc-bar" style="height:62%"></div><span>Tue</span></div>
@@ -453,36 +467,15 @@
               <div class="wc-day"><div class="wc-bar" style="height:0%"></div><span>Sun</span></div>
             </div>
           </div>
-
-          <!-- Tier 2 Preview -->
-          <div class="glass-card tier2-preview">
-            <div class="t2-header">
-              <h3>Advanced Insights</h3>
-              <span class="tier-label premium">Tier 2</span>
+          
+          <!-- AI Insight -->
+          <div class="section-header"><h2>AI Insight</h2></div>
+          <div class="daily-insight-card" style="background:rgba(52, 211, 153, 0.05); border-color:rgba(52, 211, 153, 0.2);">
+            <div class="di-header">
+              <span class="di-icon">🧠</span>
+              <span class="di-title" style="color:var(--accent-green);">Pattern Detected</span>
             </div>
-            <div class="t2-items">
-              <div class="t2-item locked-overlay">
-                <span class="t2-icon">❤️</span>
-                <span class="t2-name">Heart Rate Trends</span>
-                <span class="t2-lock">🔒</span>
-              </div>
-              <div class="t2-item locked-overlay">
-                <span class="t2-icon">⌚</span>
-                <span class="t2-name">Wearable Sync</span>
-                <span class="t2-lock">🔒</span>
-              </div>
-              <div class="t2-item locked-overlay">
-                <span class="t2-icon">📊</span>
-                <span class="t2-name">Advanced Scoring</span>
-                <span class="t2-lock">🔒</span>
-              </div>
-              <div class="t2-item locked-overlay">
-                <span class="t2-icon">🧬</span>
-                <span class="t2-name">Bio Insights</span>
-                <span class="t2-lock">🔒</span>
-              </div>
-            </div>
-            <button class="btn-upgrade-sm" id="btn-upgrade-health">Unlock with Pro →</button>
+            <p class="di-text" style="font-style:normal;">"You perform best when sleep exceeds 7h. Consistency in your schedule will significantly improve your daily energy."</p>
           </div>
         </div>
       </section>
@@ -491,12 +484,22 @@
       <section id="tab-profile" class="tab-panel">
         <div class="dash-scroll">
           <!-- Profile Head -->
-          <div class="profile-header">
-            <div class="profile-avatar">
-              <span>🧬</span>
+          <div class="glass-card profile-card" style="text-align:center; margin-top:20px;">
+            <div class="profile-avatar">🧬</div>
+            <h2 style="margin-bottom:4px; font-size:1.4rem;">You</h2>
+            <div style="color:var(--text-secondary); margin-bottom:16px;" id="profile-tier">Level 7 Health Hacker</div>
+            
+            <div style="display:flex; justify-content:center; gap:24px; margin-bottom:24px;">
+              <div>
+                <div style="font-size:1.5rem; font-weight:700; color:var(--accent-gold);">72</div>
+                <div style="font-size:0.8rem; color:var(--text-secondary);">Health Score</div>
+              </div>
+              <div style="width:1px; background:var(--border-glass);"></div>
+              <div>
+                <div style="font-size:1.5rem; font-weight:700; color:var(--accent-green);">5</div>
+                <div style="font-size:0.8rem; color:var(--text-secondary);">Day Streak</div>
+              </div>
             </div>
-            <h2 class="profile-name" id="profile-name">Alex</h2>
-            <div class="profile-tier" id="profile-tier">Explorer • Free Tier</div>
           </div>
 
           <!-- Stats -->
@@ -626,6 +629,88 @@
       </div>
     </div>
   </div>
+
+    <!-- DOCTOR MATCH SCREEN -->
+    <div class="screen" id="screen-doctor" style="display:none; background:var(--bg-base); height:100vh; width:100vw; position:absolute; top:0; left:0; z-index:100;">
+      <div style="padding:40px 24px 20px; text-align:center;">
+        <button id="btn-back-doctor" style="float:left; background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">←</button>
+        <span style="font-size:1.1rem; font-weight:700;">Find a Match</span>
+      </div>
+      
+      <div class="swipe-container" style="position:relative; width:100%; height:500px; display:flex; justify-content:center; align-items:center; flex-direction:column;">
+        <div id="doctor-card" style="background:var(--bg-glass); border-radius:var(--radius-xl); width:85%; padding:32px 24px; text-align:center; border:1px solid var(--border-glass); box-shadow:0 10px 40px rgba(0,0,0,0.5); transition:transform 0.3s, opacity 0.3s; transform-origin:center bottom;">
+          <div style="font-size:4rem; margin-bottom:16px;">👩‍⚕️</div>
+          <h2 style="font-size:1.5rem; margin-bottom:8px;">Dr. Sarah Jenkins</h2>
+          <div style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:16px;">Functional Medicine</div>
+          <div style="background:rgba(52,211,153,0.1); color:var(--accent-green); display:inline-block; padding:8px 16px; border-radius:20px; font-weight:700; margin-bottom:32px;">98% Match</div>
+          
+          <div style="font-size:1.1rem; font-weight:600; margin-bottom:8px;">Consultation</div>
+          <div style="color:var(--text-secondary);">$120 or <span style="color:var(--accent-gold); font-weight:700;">1,200 Coins</span></div>
+        </div>
+        
+        <div style="display:flex; justify-content:space-between; width:85%; margin-top:32px;">
+          <button id="btn-swipe-left" style="width:60px; height:60px; border-radius:30px; border:2px solid var(--accent-red); background:rgba(239,68,68,0.1); color:var(--accent-red); font-size:1.5rem; cursor:pointer; transition:transform 0.1s;">❌</button>
+          <button id="btn-swipe-right" style="width:60px; height:60px; border-radius:30px; border:2px solid var(--accent-green); background:rgba(52,211,153,0.1); color:var(--accent-green); font-size:1.5rem; cursor:pointer; transition:transform 0.1s;">💚</button>
+        </div>
+        <div style="text-align:center; margin-top:24px; color:var(--text-secondary); font-size:0.85rem;">Swipe right for yes, left to skip</div>
+      </div>
+    </div>
+
+    <!-- MATCH SUCCESS SCREEN -->
+    <div class="screen" id="screen-match" style="display:none; background:var(--bg-base); height:100vh; width:100vw; position:absolute; top:0; left:0; z-index:100;">
+      <div class="container fade-in" style="text-align:center; display:flex; flex-direction:column; justify-content:center; height:100%;">
+        <div style="font-size:5rem; margin-bottom:24px; animation:logoPulse 2s infinite;">🎉</div>
+        <h1 style="font-size:2.5rem; font-weight:800; margin-bottom:16px; color:var(--accent-green);">It's a Match!</h1>
+        <p style="font-size:1.1rem; color:var(--text-secondary); margin-bottom:40px; padding:0 24px; line-height:1.6;">Dr. Sarah Jenkins is ready to help you optimize your health journey.</p>
+        
+        <div style="padding:0 24px;">
+          <button class="btn-primary" id="btn-book-call" style="width:100%; margin-bottom:16px;">Book Intro Call</button>
+          <button class="btn-text" id="btn-match-later" style="width:100%;">Maybe Later</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOD NUTRITION SCREEN -->
+    <div class="screen" id="screen-food" style="display:none; background:var(--bg-base); height:100vh; width:100vw; position:absolute; top:0; left:0; z-index:100;">
+      <div style="padding:40px 24px 20px; display:flex; align-items:center;">
+        <button id="btn-back-food" style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; margin-right:16px;">←</button>
+        <div style="text-align:center; flex:1;">
+          <span style="font-size:1.1rem; font-weight:700; margin-left:-24px;">Today's Nutrition</span>
+        </div>
+      </div>
+      
+      <div style="padding:24px;">
+        <div class="daily-insight-card" style="margin-bottom:32px; background:rgba(52, 211, 153, 0.05); border-color:rgba(52, 211, 153, 0.2);">
+          <div class="di-header">
+            <span class="di-icon">🧠</span>
+            <span class="di-title" style="color:var(--accent-green);">Based on stress levels</span>
+          </div>
+          <p class="di-text" style="font-style:normal;">"Your cortisol has been running high today. A meal rich in Omega-3s and Magnesium will help support your nervous system."</p>
+        </div>
+        
+        <div class="glass-card" style="margin-bottom:24px;">
+          <h3 style="margin-bottom:16px; font-size:1.1rem;">Recommended Meal</h3>
+          <div style="display:flex; gap:16px; align-items:center; margin-bottom:24px;">
+            <div style="width:80px; height:80px; background:rgba(255,255,255,0.05); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:2.5rem; border:1px solid rgba(255,255,255,0.05);">🥗</div>
+            <div>
+              <div style="font-weight:700; font-size:1.15rem; margin-bottom:4px;">Wild Salmon Bowl</div>
+              <div style="font-size:0.85rem; color:var(--text-secondary); line-height:1.4;">Quinoa, avocado, mixed greens, flax seeds</div>
+            </div>
+          </div>
+          
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-secondary); margin-bottom:32px; padding-bottom:24px; border-bottom:1px solid var(--border-glass);">
+            <span style="display:flex; align-items:center; gap:4px;">⏱️ 15m Prep</span>
+            <span style="display:flex; align-items:center; gap:4px;">🔥 450 kcal</span>
+            <span style="color:var(--accent-green); font-weight:600;">Low GI</span>
+          </div>
+          
+          <div style="display:flex; gap:12px; flex-direction:column;">
+            <button class="btn-primary" style="flex:1; padding:16px; display:flex; align-items:center; justify-content:center; gap:8px;">Order Now <span style="font-size:0.85rem; font-weight:500; opacity:0.8;">via UberEats</span></button>
+            <button class="btn-secondary" style="flex:1; padding:16px;">Save Recipe</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <script src="app.js"></script>
 </body>

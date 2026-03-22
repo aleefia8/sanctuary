@@ -120,13 +120,13 @@
   });
 
   // ─── Onboarding: Preferences ──────────────────
-  $$('.pref-card').forEach(card => {
+  $$('.pref-row-card').forEach(card => {
     card.addEventListener('click', () => {
       const pref = card.dataset.pref;
       card.classList.toggle('selected');
       
       // Bounce animation
-      card.style.transform = 'scale(0.95)';
+      card.style.transform = 'translateX(8px)';
       setTimeout(() => { card.style.transform = ''; }, 150);
       
       if (state.preferences.has(pref)) {
@@ -140,7 +140,30 @@
   });
 
   $('#btn-prefs-next').addEventListener('click', () => {
-    transitionToScreen('screen-preferences', 'screen-score');
+    transitionToScreen('screen-preferences', 'screen-mood');
+  });
+
+  // ─── Onboarding: Mood Slider ──────────────────
+  const moodSlider = $('#mood-slider');
+  const moodEmoji = $('#mood-slider-emoji');
+  if (moodSlider) {
+    moodSlider.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value);
+      if (val < 33) {
+        moodEmoji.textContent = '😴';
+        moodEmoji.style.transform = 'scale(0.9)';
+      } else if (val < 66) {
+        moodEmoji.textContent = '😐';
+        moodEmoji.style.transform = 'scale(1)';
+      } else {
+        moodEmoji.textContent = '⚡';
+        moodEmoji.style.transform = 'scale(1.1)';
+      }
+    });
+  }
+
+  $('#btn-mood-next').addEventListener('click', () => {
+    transitionToScreen('screen-mood', 'screen-score');
     
     // Animate score after transition
     setTimeout(() => {
@@ -149,17 +172,17 @@
     }, 600);
   });
 
-  // ─── Onboarding: Score → Tier ─────────────────
-  $('#btn-score-next').addEventListener('click', () => {
-    transitionToScreen('screen-score', 'screen-tier');
+  // ─── Onboarding: Score Reveal ─────────────────
+  $('#btn-score-enter').addEventListener('click', () => {
+    showApp();
   });
 
-  // ─── Onboarding: Tier Selection ───────────────
-  $$('.btn-tier').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.tier = btn.dataset.tier;
-      showApp();
-    });
+  $('#btn-score-unlock').addEventListener('click', () => {
+    state.tier = 'pro';
+    showApp();
+    setTimeout(() => {
+      $('#upgrade-modal').classList.add('show');
+    }, 800);
   });
 
   // ─── Dashboard Animation ──────────────────────
@@ -655,6 +678,84 @@
         observer.observe(el);
       });
     }, 100);
+  }
+
+  // ─── Phase 4: Doctor Match & Food ─────────────────
+  const btnActionDoctor = $('#btn-action-doctor');
+  if (btnActionDoctor) {
+    btnActionDoctor.addEventListener('click', () => {
+      transitionToScreen('app-dashboard', 'screen-doctor');
+    });
+  }
+
+  const btnActionFood = $('#btn-action-food');
+  if (btnActionFood) {
+    btnActionFood.addEventListener('click', () => {
+      transitionToScreen('app-dashboard', 'screen-food');
+    });
+  }
+
+  // Doctor Match Logic
+  const doctorCard = $('#doctor-card');
+  const btnSwipeLeft = $('#btn-swipe-left');
+  const btnSwipeRight = $('#btn-swipe-right');
+  const btnBackDoctor = $('#btn-back-doctor');
+  const btnBackFood = $('#btn-back-food');
+
+  const resetDoctorCard = () => {
+    setTimeout(() => {
+      if (doctorCard) {
+        doctorCard.style.transform = '';
+        doctorCard.style.opacity = '1';
+      }
+    }, 500);
+  };
+
+  if (btnSwipeLeft && doctorCard) {
+    btnSwipeLeft.addEventListener('click', () => {
+      doctorCard.style.transform = 'translateX(-150%) rotate(-15deg)';
+      doctorCard.style.opacity = '0';
+      resetDoctorCard();
+    });
+  }
+
+  if (btnSwipeRight && doctorCard) {
+    btnSwipeRight.addEventListener('click', () => {
+      doctorCard.style.transform = 'translateX(150%) rotate(15deg)';
+      doctorCard.style.opacity = '0';
+      setTimeout(() => {
+        transitionToScreen('screen-doctor', 'screen-match');
+      }, 300);
+    });
+  }
+
+  if (btnBackDoctor) {
+    btnBackDoctor.addEventListener('click', () => {
+      transitionToScreen('screen-doctor', 'app-dashboard');
+    });
+  }
+  
+  if (btnBackFood) {
+    btnBackFood.addEventListener('click', () => {
+      transitionToScreen('screen-food', 'app-dashboard');
+    });
+  }
+
+  // Match Success logic
+  const btnBookCall = $('#btn-book-call');
+  const btnMatchLater = $('#btn-match-later');
+  if (btnBookCall) {
+    btnBookCall.addEventListener('click', () => {
+      alert("Booking system integration coming soon!");
+      transitionToScreen('screen-match', 'app-dashboard');
+      resetDoctorCard();
+    });
+  }
+  if (btnMatchLater) {
+    btnMatchLater.addEventListener('click', () => {
+      transitionToScreen('screen-match', 'app-dashboard');
+      resetDoctorCard();
+    });
   }
 
 })();
