@@ -130,6 +130,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: pulseGlow 6s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes pulseGlow {
